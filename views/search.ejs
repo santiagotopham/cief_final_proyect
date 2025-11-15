@@ -1,0 +1,17 @@
+<%- include('./templates/head') %>
+<body>
+    <%- include('./templates/navbar') %>
+    <main>
+        <hr />
+        <div class="game_grid">
+            <% games.forEach(currentGame => { %>
+                <%- include('./templates/game_card', { currentGame }) %>
+            <% }) %>
+        </div>
+        <% if (games && games.length == 0) { %>
+            <span>Upps, parece que aun no hay juegos...</span> 
+        <% } %>
+    </main>
+    <%- include('./templates/footer') %>
+</body>
+</html>

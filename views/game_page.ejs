@@ -1,0 +1,67 @@
+<%- include('./templates/head') %>
+<body>
+    <%- include('./templates/navbar') %>
+    <main>
+        <hr />
+        <div class="game_detail">
+            <a href="/game/<%= game.Id %>"><img src="<%= game.ImageUrl %>" alt="<%= game.Title %>"></a>
+        
+            <div  class="game_info">
+                <div class="vote_container">
+                    <button class="vote_btn" onclick="voteGame('<%= game.Id %>', 1)" title="Me gusta">
+                        <img src="/img/thumb_up.png" alt="Like">
+                    </button>
+                    <span id="thumbsCounter"><%= game.ThumbsUpCounter || 0 %></span>
+                    <button class="vote_btn" onclick="voteGame('<%= game.Id %>', -1)" title="No me gusta">
+                        <img src="/img/thumb_down.png" alt="Dislike">
+                    </button>
+                </div>
+                <p>
+                    <strong>Desarrolladora:</strong><%= game.Developer %>
+                </p>
+                <p><strong>Lanzamiento:</strong> <%= game.LaunchDate %></p>
+                <p><strong>Categoria:</strong> <%= game.Category %></p>
+                <p><strong>Sinopsis:</strong> <%= game.Synopsis %></p>
+
+                <% if (game.Genres && game.Genres.length > 0) { %>
+                    <div class="game_genres">
+                        <strong>Géneros:</strong>
+                        <ul>
+                            <% game.Genres.forEach(genre => { %>
+                                <li><%= genre.Name %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } %>
+
+                <% if (game.Platforms && game.Platforms.length > 0) { %>
+                    <div class="chips_container top_space">
+                        <% game.Platforms.forEach(platform => { %>
+                            <span class="item_chip"><%= platform.Name %></span>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="comments_section">
+            <h3>Comentarios</h3>
+            <form id="commentForm" class="comment_form">
+                <input type="hidden" id="commentGameId" value="<%= game.Id %>">
+                <div class="form-group">
+                    <label for="commentUserName">Tu nombre:</label>
+                    <input type="text" id="commentUserName" name="userName" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <label for="commentText">Comentario:</label>
+                    <textarea id="commentText" name="text" maxlength="1000" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="comment_submit_btn">Publicar Comentario</button>
+            </form>
+            <div id="commentsContainer" class="comments_list">
+                <p class="loading_comments">Cargando comentarios...</p>
+            </div>
+        </div>
+    </main>
+    <%- include('./templates/footer') %>
+</body>
+</html>

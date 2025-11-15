@@ -1,0 +1,249 @@
+<%- include('./templates/head') %>
+<body>
+    <%- include('./templates/navbar') %>
+    <main class="backoffice_main" style="display: none;">
+        <div class="section_header">
+            <h2>Panel de Administración</h2>
+            <button class="logout_btn" onclick="logout()">Cerrar Sesión</button>
+        </div>
+        <div class="game_section">
+            <div class="section_header">
+                <h2>Juegos</h2>
+                <button class="new_btn" onclick="openGameModal('add')">+ Nuevo Juego</button>
+            </div>
+            <table class="data_table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Fecha lanzamiento</th>
+                        <th>Desarrolladora</th>
+                        <th>Categoria</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% games.forEach(currentGame => { %>
+                        <tr>
+                            <td><%= currentGame.Id %></td>
+                            <td><%= currentGame.Title %></td>
+                            <td><%= new Date(currentGame.LaunchDate).toLocaleDateString('es-ES') %></td>
+                            <td><%= currentGame.Developer %></td>
+                            <td><%= currentGame.Category %> </td>
+                            <td>
+                                <button onclick="loadAndShowGameEditForm('<%= JSON.stringify(currentGame) %>')" title="Editar juego">
+                                    Editar
+                                </button>
+                                <button onclick="deleteGame('<%= currentGame.Id %>')" title="Borrar juego">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="genre_section">
+            <div class="section_header">
+                <h2>Géneros</h2>
+                <button class="new_btn" onclick="openGenreModal('add')">+ Nuevo Género</button>
+            </div>
+            <table class="data_table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="genresTableBody">
+                    <% genres.forEach(currentGenre => { %>
+                        <tr>
+                            <td><%= currentGenre.Id %></td>
+                            <td><%= currentGenre.Name %></td>
+                            <td>
+                                <button onclick="editGenre('<%= currentGenre.Id %>', '<%= currentGenre.Name %>')" title="Editar género">
+                                    Editar
+                                </button>
+                                <button onclick="deleteGenre('<%= currentGenre.Id %>')" title="Borrar género">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="platform_section">
+            <div class="section_header">
+                <h2>Plataformas</h2>
+                <button class="new_btn" onclick="openPlatformModal('create')">+ Nueva Plataforma</button>
+            </div>
+            <table class="data_table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Plataforma Principal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="platformsTableBody">
+                    <% platforms.forEach(currentPlatform => { %>
+                        <tr>
+                            <td><%= currentPlatform.Id %></td>
+                            <td><%= currentPlatform.Name %></td>
+                            <td><%= currentPlatform.MainPlatformName || 'N/A' %></td>
+                            <td>
+                                <button onclick="editPlatform('<%= currentPlatform.Id %>', '<%= currentPlatform.Name %>', '<%= currentPlatform.MainPlatformId %>')" title="Editar plataforma">
+                                    Editar
+                                </button>
+                                <button onclick="deletePlatform('<%= currentPlatform.Id %>')" title="Borrar plataforma">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div id="gameModal" class="modal">
+        <div class="modal_content">
+            <div class="modal_header">
+                <h2 id="gameModalTitle">Nuevo Juego</h2>
+                <button class="close_modal" onclick="closeModal('gameModal')">&times;</button>
+            </div>
+            <form id="gameForm" class="modal_form">
+                <input type="hidden" id="gameId" name="id">
+                <div>
+                    <label for="gameTitle">Título:</label>
+                    <input type="text" id="gameTitle" name="title" required>
+                </div>
+                <div>
+                    <label for="gameImageUrl">Enlace imagen:</label>
+                    <input type="text" id="gameImageUrl" name="imageUrl" required>
+                </div>
+                <div>
+                    <label for="gameLaunchDate">Fecha lanzamiento:</label>
+                    <input type="date" id="gameLaunchDate" name="launchDate" required>
+                </div>
+                <div>
+                    <label for="gameDeveloper">Desarrolladora:</label>
+                    <input type="text" id="gameDeveloper" name="developer" required>
+                </div>
+                <div class="category_group">
+                    <label for="category">Categoría:</label>
+                    <div class="category_options">
+                        <label>
+                            <input type="radio" name="category" value="A" required>
+                            A
+                        </label>
+                        <label>
+                            <input type="radio" name="category" value="AA">
+                            AA
+                        </label>
+                        <label>
+                            <input type="radio" name="category" value="AAA">
+                            AAA
+                        </label>
+                    </div>
+                </div>
+                <div class="selector_container">
+                    <label for="gameGenres">Géneros:</label>
+                    <select id="gameGenres" name="genres" multiple>
+                        <% genres.forEach(currentGenre => { %>
+                            <option value="<%= currentGenre.Id %>"><%= currentGenre.Name %></option>
+                        <% }) %>
+                    </select>
+                    <button type="button" onclick="addGenresFromSelect()">Añadir</button>
+                    <div id="selectedGenresList" class="chips_container"></div>
+                </div>
+                <div class="selector_container">
+                    <label for="gamePlatforms">Plataformas:</label>
+                    <select id="gamePlatforms" name="platforms" multiple>
+                        <% platforms.forEach(currentPlatform => { %>
+                            <option value="<%= currentPlatform.Id %>"><%= currentPlatform.Name %></option>
+                        <% }) %>
+                    </select>
+                    <button type="button" onclick="addPlatformsFromSelect()">Añadir</button>
+                    <div id="selectedPlatformsList" class="chips_container"></div>
+                </div>
+                <div>
+                    <label for="gameSynopsis">Sinopsis:</label>
+                    <textarea id="gameSynopsis" name="synopsis" required></textarea>
+                </div>
+                <div class="modal_buttons">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="closeModal('gameModal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="genreModal" class="modal">
+        <div class="modal_content">
+            <div class="modal_header">
+                <h2 id="genreModalTitle">Nuevo Género</h2>
+                <button class="close_modal" onclick="closeModal('genreModal')">&times;</button>
+            </div>
+            <form id="genreForm" class="modal_form">
+                <input type="hidden" id="genreId" name="id">
+                <div>
+                    <label for="genreName">Nombre:</label>
+                    <input type="text" id="genreName" name="name" required>
+                </div>
+                <div class="modal_buttons">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="closeModal('genreModal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="platformModal" class="modal">
+        <div class="modal_content">
+            <div class="modal_header">
+                <h2 id="platformModalTitle">Nueva Plataforma</h2>
+                <button class="close_modal" onclick="closeModal('platformModal')">&times;</button>
+            </div>
+            <form id="platformForm" class="modal_form" method="post">
+                <input type="hidden" id="platformId" name="id">
+                <div>
+                    <label for="platformName">Nombre:</label>
+                    <input type="text" id="platformName" name="name" required>
+                </div>
+                <div>
+                    <label for="platformMainPlatform">Plataforma Principal:</label>
+                    <select id="platformMainPlatform" name="mainPlatformId" required>
+                        <option value="">Selecciona una plataforma principal</option>
+                        <% mainPlatforms.forEach(mainPlatform => { %>
+                            <option value="<%= mainPlatform.Id %>"><%= mainPlatform.Name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="modal_buttons">
+                    <button type="submit">Guardar</button>
+                    <button type="button" onclick="closeModal('platformModal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = "/login";
+            } else {
+                document.querySelector('.backoffice_main').style.display = 'block';
+            }
+        })();
+    </script>
+    
+    <%- include('./templates/footer') %>
+</body>
+</html>

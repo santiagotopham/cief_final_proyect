@@ -1,0 +1,61 @@
+# Pagina para calificacion de juegos
+
+## Lista de tareas a realizar
+
+-   [x] Base de datos
+-   [x] Datos
+    -   [x] juegos
+    -   [x] generos
+    -   [x] plataformas
+    -   [x] comentarios
+    -   [x] users
+-   [x] index - galeria
+-   [x] banner con plataformas principales
+-   [x] paginas por plataforma principal
+-   [x] plataformas como chips en pagina detalle
+-   [x] generos como lista en pagina detalle
+-   [x] calificar juego
+-   [x] poner comentario
+-   [x] buscador por like de nombre
+-   [x] filtro por genero
+-   [x] filtro por plataforma especifica
+-   [x] CRUD juegos
+    -   [x] alta
+    -   [x] alta generos asociados
+    -   [x] alta plataformas asociadas
+    -   [x] editar
+    -   [x] editar generos asociados
+    -   [x] editar plataformas asociadas
+    -   [x] eliminar
+    -   [x] eliminar generos asociados
+    -   [x] eliminar plataformas asociadas
+-   [x] CRUD generos
+    -   [x] alta
+    -   [x] editar
+    -   [x] eliminar
+-   [x] CRUD plataformas
+    -   [x] alta
+    -   [x] editar
+    -   [x] eliminar
+-   [x] login
+-   [x] notificaciones Toast
+-   [x] como admin borrar comentarios
+-   [x] separar logica en diferentes archivos
+-   [ ] lista de mejoras pendientes
+    -   [ ] manejo real de sesion desde el backend
+    -   [ ] manejo real de contraseña no con encriptacion simple
+    -   [ ] aplicar update anti injecciones y XSS (rama en github)
+    -   [ ] manejo de errores completo
+    -   [ ] validacion de duplicados
+    -   [ ] responsive
+    -   [ ] alert bonito de confirmacion
+    -   [ ] scroll en tablas panel admin
+    -   [ ] que solo pueda votar una vez cada persona
+    -   [ ] generos y plataformas en pagina detalle sean links a los filtros
+    -   [ ] permitir combinar filtros, agregar mas filtros (lanzamiento, like ratio, idioma, etc)
+    -   [ ] mas info de los juegos en pag detalle (logros, time to beat, idiomas, links a tiendas oficiales?)
+    -   [ ] localizacion
+    -   [ ] mas paginas agregando mas contenido
+        -   [ ] proximos lanzamientos
+        -   [ ] listas top 100
+        -   [ ] noticias relacionadas y eventos

@@ -1,5 +1,11 @@
 # Pagina para calificacion de juegos
 
+Sitio publico (si da 502 esperar unos mins y volver a intentar, se suspende al estar sin uso por ser gratuito)
+https://cief-final-proyect.onrender.com/
+
+Repositorio
+https://github.com/santiagotopham/cief_final_proyect
+
 ## Lista de tareas a realizar
 
 -   [x] Base de datos

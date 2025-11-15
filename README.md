@@ -6,7 +6,7 @@ https://cief-final-proyect.onrender.com/
 Repositorio
 https://github.com/santiagotopham/cief_final_proyect
 
-## Lista de tareas a realizar
+## Items realizados/ por realizar durante el proyecto
 
 -   [x] Base de datos
 -   [x] Datos

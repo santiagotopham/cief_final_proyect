@@ -60,7 +60,7 @@ https://github.com/santiagotopham/cief_final_proyect
     -   [ ] responsive
     -   [ ] alert bonito de confirmacion
     -   [ ] scroll en tablas panel admin
-    -   [ ] que solo pueda votar una vez cada persona
+    -   [ ] migrar sistema de votacion a los comentarios, para 1 por persona
     -   [ ] generos y plataformas en pagina detalle sean links a los filtros
     -   [ ] permitir combinar filtros, agregar mas filtros (lanzamiento, like ratio, idioma, etc)
     -   [ ] mas info de los juegos en pag detalle (logros, time to beat, idiomas, links a tiendas oficiales?)

@@ -19,5 +19,6 @@ export async function executeQuery(query, params = []) {
 	const connection = await openDbConnection();
 
 	const [rows] = await connection.execute(query, params);
+	connection.end();
 	return rows;
 }

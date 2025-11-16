@@ -2,7 +2,7 @@
 
 //////////////////////  	JUEGOS	   //////////////////////
 
-//Envio form de juego al backend
+//Envío form de juego al backend
 async function handleGameFormSubmit(e) {
 	e.preventDefault();
 
@@ -40,7 +40,7 @@ async function handleGameFormSubmit(e) {
 	}
 }
 
-//Envio borrado de juego al backend
+//Envío borrado de juego al backend
 function deleteGame(id) {
 	if (!confirm("¿Estás seguro de que quieres eliminar este juego?")) return;
 
@@ -63,7 +63,7 @@ function deleteGame(id) {
 		});
 }
 
-//Envio de busqueda por nombre al backend
+//Envío de búsqueda por nombre al backend
 function searchGame(event) {
 	event.preventDefault();
 	const input = document.getElementById("searchInput");
@@ -74,7 +74,7 @@ function searchGame(event) {
 	return false;
 }
 
-//Envio de votacion al backend
+//Envío de votación al backend
 async function voteGame(gameId, vote) {
 	try {
 		const res = await fetch(`/game/vote/${gameId}`, {
@@ -105,7 +105,7 @@ async function voteGame(gameId, vote) {
 
 //////////////////////  	COMENTARIOS	   //////////////////////
 
-//Carga de comentarios segun juego desde el backend
+//Carga de comentarios según juego desde el backend
 async function loadComments(gameId) {
 	try {
 		const response = await fetch(`/comment/game/${gameId}`);
@@ -119,7 +119,7 @@ async function loadComments(gameId) {
 	}
 }
 
-//Envio form de comentarios al backend
+//Envío form de comentarios al backend
 async function handleCommentFormSubmit(e) {
 	e.preventDefault();
 
@@ -149,7 +149,7 @@ async function handleCommentFormSubmit(e) {
 	}
 }
 
-//Envio borrado de comentario al backend
+//Envío borrado de comentario al backend
 async function deleteComment(id, gameId) {
 	if (!confirm("¿Eliminar este comentario?")) return;
 
@@ -172,21 +172,21 @@ async function deleteComment(id, gameId) {
 
 //////////////////////  	GENEROS	   //////////////////////
 
-//Carga de generos desde backend
+//Carga de géneros desde backend
 async function loadGenres() {
 	try {
 		const response = await fetch("/genre/all");
-		if (!response.ok) throw new Error("Error al cargar generos");
+		if (!response.ok) throw new Error("Error al cargar géneros");
 		const data = await response.json();
 
 		buildGenresTables("genresTableBody", data);
 	} catch (error) {
 		console.error("Error:", error);
-		showToast("Error al cargar los generos", true);
+		showToast("Error al cargar los géneros", true);
 	}
 }
 
-//Envio form de generos al backend
+//Envío form de géneros al backend
 async function handleGenreFormSubmit(e) {
 	e.preventDefault();
 
@@ -224,7 +224,7 @@ async function handleGenreFormSubmit(e) {
 	}
 }
 
-//Envio borrado de genero al backend
+//Envío borrado de género al backend
 async function deleteGenre(id) {
 	if (!confirm("¿Eliminar este género?")) return;
 
@@ -262,7 +262,7 @@ async function loadPlatforms() {
 	}
 }
 
-//Envio form de plataformas al backend
+//Envío form de plataformas al backend
 async function handlePlatformFormSubmit(e) {
 	e.preventDefault();
 
@@ -311,7 +311,7 @@ async function handlePlatformFormSubmit(e) {
 	}
 }
 
-//Envio borrado de plataforma al backend
+//Envío borrado de plataforma al backend
 async function deletePlatform(id) {
 	if (!confirm("¿Eliminar esta plataforma?")) return;
 
@@ -353,7 +353,7 @@ async function loadFilters() {
 
 //////////////////////  	LOGIN	   //////////////////////
 
-//Iniciar sesion
+//Iniciar sesión
 async function handleLoginSubmit(e) {
 	e.preventDefault();
 

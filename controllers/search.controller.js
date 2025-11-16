@@ -56,7 +56,7 @@ export async function searchByPlatform(req, res) {
 	});
 }
 
-// Categorias del Navbar (por plataforma principal/padre)
+// Categorías del Navbar (por plataforma principal/padre)
 export async function searchByMainPlatform(req, res) {
 	const mainPlatform = await getMainPlatformByName(req.params.name);
 	const games = await getGamesByMainPlatform(mainPlatform.Id);

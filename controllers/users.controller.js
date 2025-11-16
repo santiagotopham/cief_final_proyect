@@ -2,7 +2,7 @@ import { isUserValid } from "../services/users.service.js";
 import { buildNavBarMenu } from "../services/common.service.js";
 import { siteName } from "../config/constants.js";
 
-//Pagina login
+//Página login
 export async function renderLogin(req, res) {
 	res.render("login", {
 		title: siteName,

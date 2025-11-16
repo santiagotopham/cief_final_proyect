@@ -58,7 +58,7 @@ export async function getById(id) {
 	return games;
 }
 
-//Obtener segun lista de ids
+//Obtener según lista de ids
 export async function getGamesByIdList(idsList) {
 	const idsString = arrayToString(idsList);
 	const query = `SELECT * FROM Games where Id in (${idsString})`;
@@ -157,7 +157,7 @@ export async function getRelatedEntitesFromGames(games) {
 	return { gameGenres, gamePlatforms };
 }
 
-//Disociar generos
+//Disociar géneros
 export async function deleteGenresFromGame(gameId) {
 	await deleteRelatedToGame(gameId, "GenresPerGame");
 }
@@ -175,7 +175,7 @@ export async function deleteRelatedToGame(gameId, tableName) {
 	await executeQuery(sql, values);
 }
 
-//Obtener segun plataforma principal/padre
+//Obtener según plataforma principal/padre
 export async function getGamesByMainPlatform(mainPlatformId) {
 	const query = `SELECT ppg.GameId FROM mainplatforms mp
 					join Platforms p on mp.Id = p.MainPlatformId
@@ -191,7 +191,7 @@ export async function getGamesByMainPlatform(mainPlatformId) {
 	return games;
 }
 
-//Obtener segun genero
+//Obtener según genero
 export async function getGamesByGenreId(genreId) {
 	const query = `SELECT GameId FROM GenresPerGame gpg where gpg.GenreId = ?`;
 
@@ -206,7 +206,7 @@ export async function getGamesByGenreId(genreId) {
 	return games;
 }
 
-//Obtener segun plataforma
+//Obtener según plataforma
 export async function getGamesByPlatformId(platformId) {
 	const query = `SELECT GameId FROM PlatformsPerGame gpg where gpg.PlatformId = ?`;
 

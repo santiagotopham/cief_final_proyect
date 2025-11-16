@@ -22,7 +22,7 @@ function getCorrectDateFormat(unformattedDate) {
 	return `${year}-${month}-${day}`;
 }
 
-//Carga chips en form de edicion de juegos
+//Carga chips en form de edición de juegos
 function loadEditChipItems(itemsArray, selectedMap, selectorName, callback) {
 	if (itemsArray && Array.isArray(itemsArray)) {
 		selectedMap.clear();
@@ -77,7 +77,7 @@ function checkAdminAccess() {
 	}
 }
 
-//Cerrar sesion
+//Cerrar sesión
 function logout() {
 	sessionStorage.removeItem("adminLoggedIn");
 	isLoggedIn = false;

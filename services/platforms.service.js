@@ -18,7 +18,7 @@ export async function getPlatformsList() {
 	return platforms;
 }
 
-//Obtener segun id
+//Obtener según id
 export async function getPlatformById(id) {
 	const query = "SELECT * FROM Platforms WHERE Id = ? LIMIT 1";
 
@@ -46,7 +46,7 @@ export async function getMainPlatformByName(name) {
 	return platforms[0];
 }
 
-//Obtener segun una lista de ids de juegos
+//Obtener según una lista de ids de juegos
 export async function getPlatformsByGameId(gameIds) {
 	const idsString = arrayToString(gameIds);
 

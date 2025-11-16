@@ -2,7 +2,7 @@
 
 //////////////////////  	JUEGOS	   //////////////////////
 
-//Cargo formulario de edicion de juegos
+//Cargo formulario de edición de juegos
 function loadAndShowGameEditForm(game) {
 	isInsert = false;
 	resetGameForm();
@@ -62,7 +62,7 @@ function resetGameForm() {
 	}
 }
 
-//Agrego generos desde el selector
+//Agrego géneros desde el selector
 function addGenresFromSelect() {
 	let selectorName = "";
 	let selectedList = "";
@@ -75,7 +75,7 @@ function addGenresFromSelect() {
 	renderSelectedMap(selectedGenresMap, selectedList, "removeGenre");
 }
 
-//Borro genero selecionado
+//Borro genero seleccionado
 function removeGenre(id) {
 	selectedGenresMap.delete(String(id));
 	let selectorName = "gameGenres";
@@ -94,7 +94,7 @@ function addPlatformsFromSelect() {
 	renderSelectedMap(selectedPlatformsMap, selectedList, "removePlatform");
 }
 
-//Borro plataforma selecionada
+//Borro plataforma seleccionada
 function removePlatform(id) {
 	selectedPlatformsMap.delete(String(id));
 	let selectorName = "gamePlatforms";
@@ -106,7 +106,7 @@ function removePlatform(id) {
 
 //////////////////////  	GENEROS	   //////////////////////
 
-//Cargo formulario de edicion de generos
+//Cargo formulario de edición de géneros
 function editGenre(id, name) {
 	isInsert = false;
 	document.getElementById("genreId").value = id;
@@ -117,7 +117,7 @@ function editGenre(id, name) {
 
 //////////////////////  	PLATAFORMAS	   //////////////////////
 
-//Cargo formulario de edicion de plataformas
+//Cargo formulario de edición de plataformas
 function editPlatform(id, name, mainPlatformId) {
 	isInsert = false;
 	document.getElementById("platformId").value = id;

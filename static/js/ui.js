@@ -88,7 +88,7 @@ function buildFilterList(htmlListId, items, path) {
 		.join("");
 }
 
-//Construye tabla de generos
+//Construye tabla de géneros
 function buildGenresTables(tableId, genres) {
 	const table = document.getElementById(tableId);
 	table.innerHTML = "";

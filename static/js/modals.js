@@ -16,7 +16,7 @@ function openGameModal(mode) {
 
 //////////////////////  	GENEROS	   //////////////////////
 
-//Abro modal de generos
+//Abro modal de géneros
 function openGenreModal(mode) {
 	if (mode === "add") {
 		isInsert = true;

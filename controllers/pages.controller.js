@@ -19,7 +19,7 @@ export async function renderHome(req, res) {
 			title: siteName,
 			siteName: siteName,
 			showMessage: true,
-			subTitle: "Collecion de juegos",
+			subTitle: "Colección de juegos",
 			navBarItems: await buildNavBarMenu(),
 			games: games,
 		});
@@ -29,7 +29,7 @@ export async function renderHome(req, res) {
 	}
 }
 
-//Pagina individual/detalle
+//Página individual/detalle
 export async function renderGamePage(req, res) {
 	try {
 		const id = req.params.id;
